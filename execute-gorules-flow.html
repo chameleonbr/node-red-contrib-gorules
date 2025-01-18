@@ -1,0 +1,72 @@
+<script type="text/javascript">
+    RED.nodes.registerType('execute-gorules-flow',{
+        category: 'function',
+        color: '#fff',
+        defaults: {
+            name: {value:""},
+            flow: {
+                value: "{}",
+                validate: RED.validators.typedInput("optionsType"),
+                required: true
+            },
+            optionsType: { value: "json" },
+            trace: { value: 'Off' }
+        },
+        inputs: 1,
+        outputs: 1,
+        icon: "logo.svg",
+        label: function() {
+            return this.name||"execute-gorules-flow";
+        },
+        oneditprepare: function(){
+            $("#node-input-flow").typedInput({
+                default: "json",
+                type:"json",
+                types:["json"]
+            });
+
+            if(this.trace === 'On') {
+                $(".toggle").eq(1).addClass('selected');
+                $(".toggle").eq(0).removeClass('selected');
+            } else {
+                $(".toggle").eq(0).addClass('selected');
+                $(".toggle").eq(1).removeClass('selected');
+            }
+
+            $(".toggle").on('click', function(e) {
+                $(".toggle").removeClass('selected');
+                $(this).addClass('selected');
+                if($(this).text() === 'On') {
+                    $("#node-input-trace").val('On');
+                } else {
+                    $("#node-input-trace").val('Off');
+                }
+            });
+        }
+    });
+</script>
+
+<script type="text/html" data-template-name="execute-gorules-flow">
+    <div class="form-row">
+        <label for="node-input-name"><i class="fa fa-tag"></i> Name</label>
+        <input type="text" id="node-input-name" placeholder="Name">
+    </div>
+    <div class="form-row">
+        <label for="node-input-flow"><i class="fa fa-tag"></i>JSON</label>
+        <input type="text" id="node-input-flow" placeholder="Place Gorules JSON">
+    </div>
+    <div class="form-row">
+        <label for="node-input-file"><i class="fa fa-tag"></i>Trace</label>
+        <span class="button-group">
+            <button type="button" class="red-ui-button toggle my-button-group">Off</button>
+            <button type="button" class="red-ui-button toggle my-button-group">On</button>
+        </span>
+    </div>
+    <input type="hidden" id="node-input-trace" value="Off">
+</script>
+
+<script type="text/html" data-help-name="execute-gorules-flow">
+    <p>Execute a file with Go rules</p>
+    <p>Flow must be a gorules.io JSON flow.</p>
+    <p>Create a JSON file on <a href="https://editor.gorules.io" target="_blank">gorules.io Editor</a> and download it.</p>
+</script>

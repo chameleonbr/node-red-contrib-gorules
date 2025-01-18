@@ -1,0 +1,20 @@
+{
+  "name": "node-red-conbrib-gorules",
+  "version": "1.0.0",
+  "description": "NodeRED Node to Run GoRules flows",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "André Alexandre Avila",
+  "license": "MIT",
+  "node-red": {
+    "nodes": {
+      "execute-gorules-file": "execute-gorules-file.js",
+      "execute-gorules-flow": "execute-gorules-flow.js"
+    }
+  },
+  "dependencies": {
+    "@gorules/zen-engine": "^0.39.0"
+  }
+}

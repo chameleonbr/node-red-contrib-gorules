@@ -1,0 +1,60 @@
+<script type="text/javascript">
+    RED.nodes.registerType('execute-gorules-file',{
+        category: 'function',
+        color: '#fff',
+        defaults: {
+            name: {value:""},
+            file: {value:""},
+            trace: { value: 'Off' }
+        },
+        inputs: 1,
+        outputs: 1,
+        icon: "logo.svg",
+        label: function() {
+            return this.name||"execute-gorules-file";
+        },
+        oneditprepare: function() {
+            if(this.trace === 'On') {
+                $(".toggle").eq(1).addClass('selected');
+                $(".toggle").eq(0).removeClass('selected');
+            } else {
+                $(".toggle").eq(0).addClass('selected');
+                $(".toggle").eq(1).removeClass('selected');
+            }
+
+            $(".toggle").on('click', function(e) {
+                $(".toggle").removeClass('selected');
+                $(this).addClass('selected');
+                if($(this).text() === 'On') {
+                    $("#node-input-trace").val('On');
+                } else {
+                    $("#node-input-trace").val('Off');
+                }
+            });
+        }
+    });
+</script>
+
+<script type="text/html" data-template-name="execute-gorules-file">
+    <div class="form-row">
+        <label for="node-input-name"><i class="fa fa-tag"></i>Name</label>
+        <input type="text" id="node-input-name" placeholder="Name">
+    </div>
+    <div class="form-row">
+        <label for="node-input-file"><i class="fa fa-tag"></i>JSON File</label>
+        <input type="text" id="node-input-file" placeholder="file path">
+    </div>
+    <div class="form-row">
+        <label for="node-input-file"><i class="fa fa-tag"></i>Trace</label>
+        <span class="button-group">
+            <button type="button" class="red-ui-button toggle my-button-group">Off</button>
+            <button type="button" class="red-ui-button toggle my-button-group">On</button>
+        </span>
+    </div>
+    <input type="hidden" id="node-input-trace" value="Off">
+</script>
+
+<script type="text/html" data-help-name="execute-gorules-file">
+    <p>Execute a file with Go rules</p>
+    <p>File must be a gorules.io JSON file.</p>
+</script>

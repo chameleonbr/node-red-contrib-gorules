@@ -1,0 +1,119 @@
+{
+  "contentType": "application/vnd.gorules.decision",
+  "nodes": [
+    {
+      "type": "inputNode",
+      "id": "385949f6-3900-4819-ba6a-25678add8fa9",
+      "name": "request",
+      "position": {
+        "x": 460,
+        "y": 180
+      }
+    },
+    {
+      "type": "outputNode",
+      "id": "e4e4af39-c5df-46ef-a1bb-b0ffb94e22d7",
+      "name": "response",
+      "position": {
+        "x": 1195,
+        "y": 180
+      }
+    },
+    {
+      "type": "decisionTableNode",
+      "content": {
+        "hitPolicy": "first",
+        "rules": [
+          {
+            "_id": "df7b3dc4-cd40-4dca-9d2a-b73c01b5ec08",
+            "9cff7fb6-a497-4118-a458-787d47a0639d": "1",
+            "a6abcc46-247d-4ed5-8513-5f517393905b": "0.10"
+          },
+          {
+            "_id": "9f6596e1-8f2c-4dce-bc91-1ca6ae8132b4",
+            "9cff7fb6-a497-4118-a458-787d47a0639d": "2",
+            "a6abcc46-247d-4ed5-8513-5f517393905b": "0.25"
+          },
+          {
+            "_id": "304813e0-9d2d-43c8-8376-c70a59a876cb",
+            "9cff7fb6-a497-4118-a458-787d47a0639d": "3",
+            "a6abcc46-247d-4ed5-8513-5f517393905b": "0.5"
+          }
+        ],
+        "inputs": [
+          {
+            "id": "9cff7fb6-a497-4118-a458-787d47a0639d",
+            "name": "Input",
+            "field": "field"
+          }
+        ],
+        "outputs": [
+          {
+            "id": "a6abcc46-247d-4ed5-8513-5f517393905b",
+            "name": "Output",
+            "field": "output"
+          }
+        ],
+        "passThrough": true,
+        "inputField": null,
+        "outputPath": null,
+        "executionMode": "single",
+        "passThorough": false
+      },
+      "id": "6ccdc8a1-dac2-475a-bfc2-ab75af310455",
+      "name": "decisionTable1",
+      "position": {
+        "x": 820,
+        "y": 180
+      }
+    },
+    {
+      "type": "expressionNode",
+      "content": {
+        "expressions": [
+          {
+            "id": "179384c0-4f51-43cd-8238-3eb69b891f20",
+            "key": "xpto",
+            "value": "field * 17"
+          }
+        ],
+        "passThrough": true,
+        "inputField": null,
+        "outputPath": null,
+        "executionMode": "single"
+      },
+      "id": "0382525b-5350-40e6-94cb-29232907a9d8",
+      "name": "expression1",
+      "position": {
+        "x": 820,
+        "y": 300
+      }
+    }
+  ],
+  "edges": [
+    {
+      "id": "237df3d7-b1d3-473b-9366-bd5428dd4c96",
+      "sourceId": "385949f6-3900-4819-ba6a-25678add8fa9",
+      "type": "edge",
+      "targetId": "6ccdc8a1-dac2-475a-bfc2-ab75af310455"
+    },
+    {
+      "id": "f7e3f0e8-0b4b-4974-8928-16ed5e0df3d0",
+      "sourceId": "6ccdc8a1-dac2-475a-bfc2-ab75af310455",
+      "type": "edge",
+      "targetId": "e4e4af39-c5df-46ef-a1bb-b0ffb94e22d7"
+    },
+    {
+      "id": "9055509f-b8b1-4c4a-ae24-b8314364c135",
+      "sourceId": "385949f6-3900-4819-ba6a-25678add8fa9",
+      "type": "edge",
+      "targetId": "0382525b-5350-40e6-94cb-29232907a9d8"
+    },
+    {
+      "id": "14f8982d-6fe9-4ad3-8fb8-bb115c4c82ad",
+      "sourceId": "0382525b-5350-40e6-94cb-29232907a9d8",
+      "type": "edge",
+      "targetId": "e4e4af39-c5df-46ef-a1bb-b0ffb94e22d7"
+    }
+  ]
+}
