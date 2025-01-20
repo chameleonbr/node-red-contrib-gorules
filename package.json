@@ -1,5 +1,5 @@
 {
-  "name": "node-red-conbrib-gorules",
+  "name": "node-red-contrib-gorules",
   "version": "1.0.0",
   "description": "NodeRED Node to Run GoRules flows",
   "main": "index.js",
